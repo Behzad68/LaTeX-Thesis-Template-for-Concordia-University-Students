@@ -1,0 +1,68 @@
+\chapter{Discussion and conclusion} \label{discussion_conclusion}
+\section{Discussion} \label{sec:discussion}
+% Compare the nonoverlapping in sbj dependent and independent CVs
+As can be seen by comparing the results of Experiment 1 and 2 for non-overlapping windowing, using Subject independent CV instead of 
+Subject-dependent CV reduces the F1-score of KNN and DT by 10\% and 11\% on average for Dataset 1 and 2 respectively, which is substantial. It confirms that samples drawn from the 
+same subject cannot be considered independent. In an ARP setup, Subject dependent CV overestimates the classification performance and should, therefore, be avoided.
+% Compare the overlapping in sbj dependent and independent CVs
+The detrimental effect of subject-dependent CV is even larger when overlapping time windows are used. In this case, as can be seen by comparing the results of Experiment 1 and 2 for overlapping windowing, Subject-independent CV reduces the F1-score of KNN and DT by 16\% and 21\% on average for Dataset 1 and 2 respectively. This 
+further confirms that within-subject dependencies between time windows account for a significant part of the performance measured through 
+Subject-dependent CV. Furthermore, for overlapping windows, the performance 
+difference between subject-dependent CV and subject independent CV increases with the window 
+size. This is consistent with our previous comments, as the amount of 
+overlap between overlapping windows, and therefore their correlation, 
+also increases with the window size.
+% Overlapping windowing is not important once comes with sbj independent
+
+Comparing the results for overlapping and non-overlapping windowing in Figure~\ref{fig:exp1_ds1} and Figure~\ref{fig:exp1_ds2} shows that when using Subject-dependent CV, overlapping windowing can improve the recognition power of the classifiers, which coincides with the general idea that overlapping windowing improves the performance of HAR systems~\cite{janidarmian2017comprehensive,janidarmian2014automated}. 
+However, our results confirm that such improvement comes from the 
+increasing correlation among test and train folds due to the underlying 
+problems of Subject-dependent CV in HAR systems.      
+% Overlapping windowing is not important once comes with sbj independent
+In contrast, when using Subject independent CV, the impact of using overlapping
+windows is minor to negligible, as can be seen in  
+Figure~\ref{fig:exp2_ds1} and Figure~\ref{fig:exp2_ds2}. This is in contradiction with 
+the common argument that overlapping windows improve classification
+performance by bringing more data to the classifier. However, it also 
+confirms our hypothesis that the performance increase coming from 
+overlapping windows is, in fact, coming from the extra correlation 
+between time windows, when Subject-dependent CV is used.
+
+Experiment~3 showed that this conclusion also holds when using a different set of hyperparameters, which improves the generalizability of our result. 
+
+The results of Experiment 4 show that the impact of overlapping windowing with subject independent CV can be different per activity. In other words, overlapping windowing for some activities such as Trunk Twist and Lateral Raise improves the recognition performances and for others like Repetitive forward stretching and Heels not. However, such changes remain negligible for most activities and using this technique in HAR seems to be non-beneficial. 
+
+Experiment 5 explored the use of more discriminative features with a neural-network model, and the results similarly suggest that the use of overlapping windows does not provide major performance improvements.
+
+
+Finally, Table~\ref{tab:resources} shows the data size and required time for segmentation and training in overlapping and non-overlapping windowing techniques with subject independent CV for two datasets. Segmenting using overlapping windows is almost twice longer than with non-overlapping windows, which is significant. Similarly, training on the data windowed by overlapping windows technique takes 4 times of non-overlapping one. As for storage, the size of segmented data by overlapping sliding windows technique is almost 9 times of data produced by non-overlapping one for both datasets. In spite of such increase in size and computation, this technique does not improve the performance of the classifiers when used with Subject independent CV.
+
+%The resource issues are even worse in active learning
+
+
+% we use the dataset of two wellknown HAR database which contain different type of activities ranging from ....... .  Having such big distributin of activites help us to be confident about our results.
+
+\begin{table}[]
+\begin{tabular}{|c|c|>{\centering}m{1.5cm}|c|>{\centering}m{1.5cm}|c|c|c|}
+\hline 
+\multirow{2}{*}{Dataset} & \multirow{2}{*}{Raw size (GB)} & \multicolumn{3}{c|}{Nonoverlapping windowing} & \multicolumn{3}{c|}{Overlapping windowing }\tabularnewline
+\cline{3-8} \cline{4-8} \cline{5-8} \cline{6-8} \cline{7-8} \cline{8-8} 
+ &  & \multicolumn{2}{c|}{Segmentation } & \multirow{2}{1.5cm}{Training time (day)} & \multicolumn{2}{c|}{Segmentation } & \multirow{2}{*}{Training time (day)}\tabularnewline
+\cline{1-4} \cline{2-4} \cline{3-4} \cline{4-4} \cline{6-7} \cline{7-7} 
+\multicolumn{1}{c}{-} & - & Time (Hour) & Size(GB) &  & Time (Hour) & Size (GB) & \tabularnewline
+\hline 
+1 & 2.4 & 6.0 & 2.3 & 1.0 & 11.0 & 21 & 4.0\tabularnewline
+\hline 
+2 & 3.4 & 12.0 & 5.8 & 2.0 & 20.0 & 51 & 8.0\tabularnewline
+\hline 
+\end{tabular}
+        \caption{Overlapping windowing vs. nonoverlapping windowing required resources - Subject independent CV}
+        \label{tab:resources}
+\end{table}
+
+\section{Conclusion} \label{sec:conclusion}
+We conclude that the suggested use of overlapping sliding windows in HAR systems is associated with underlying limitations of subject-dependent CV. When subject-independent CV is used, overlapping sliding windows do not improve the performance of HAR systems but still require substantially more resources than non-overlapping windows.
+
+
+Our results show that the performance of all classifiers drops when subject-independent CV is used rather than subject-dependent CV. One possible way to address this problem would be to use features that are more common among subjects with different characteristics. Thus,   
+in our future work, we will design such features and investigate their impact on the performance of HAR systems. This would enable building more generalized systems with a limited number of subjects. 

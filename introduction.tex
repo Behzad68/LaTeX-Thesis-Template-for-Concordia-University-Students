@@ -1,0 +1,68 @@
+\chapter{Introduction} \label{chap:introdcution}
+% Thanks to the importance of comprehension of human demands and necessities, evaluation of people's habits and daily activities has been an active research area during the last decades. Such understanding has many applications in different fields including security, virtual reality, sports training, and health care. For 
+% instance, this information has been used to detect anomalous behaviors such as 
+% falls~\citep{luvstrek2009fall,tamura2009wearable,bianchi2010barometric} and track movement-related 
+% conditions in seniors~\citep{chen2014implementing}. 
+This chapter includes an overview of the thesis, along with a description of the
+challenges. A summary is also given on contributions that are brought forth into this
+thesis.
+\section{Research Problem and Scope}
+The tremendous advances in microelectronics and computer systems during the past decades enable wearable and mobile devices with remarkable abilities which are transforming society at a rapid pace. Such abilities including high computational power, low cost, and small size have provided a context in which people interact with them as inseparable parts of their life which produces huge volumes of data. There exists an active research area named \emph{Ubiquitous Sensing} with the main goal of extracting
+knowledge from the such data~\cite{perez2010g}. In particular, thanks to the importance of comprehension of human demands and necessities, \emph{human activity recognition} (HAR) has become a task of high interest among researchers. Such understanding has many applications in different fields including security, virtual reality, sports training, and especially health care. For 
+instance, this information has been used to detect anomalous behaviors such as 
+falls~\citep{luvstrek2009fall,tamura2009wearable,bianchi2010barometric} and track movement-related 
+conditions in seniors~\citep{chen2014implementing}. Another example is recognizing human activities to promote healthier lifestyles by encouraging do exercise~\citep{lin2006fish,consolvo2008activity} and preventing unhealthy habits such as tobacco use or unwholesome food~\citep{sazonov2009automatic,sazonov2011rf}.      
+
+The recognition of human activities has been approached in two different ways, namely using external and wearable sensors~\citep{lara2012survey}. In the external scenario, the sensors are fixed in prearranged points and the recognition depends on the interaction of users with the sensors and also being accessible to them. As for wearable sensing, however,  the sensors are attached to the user's body and consequently, recognition is invariant to user interaction and position respect to the sensors. In general, Wearable sensing has been proven to be the prevalent technology in HAR~\citep{banos2014window};  
+ 
+
+A classic example of using external sensors to recognize human activities is intelligent homes~\citep{kasteren2010activity,tolstikov2011comparison,yang2011activity,sarkar2011gpars}. In these systems, sensors are placed in target objects (e.g. stove, fridge, washing machine, etc) and users should interact with them so that they can recognize user's activities. Another example of external sensing is using cameras to recognize human activities~\citep{turaga2008machine,candamo2009understanding,joseph2010framework,ahad2008human} which is especially suitable for security and gaming~\citep{shotton2011real}. In general, systems with external sensors are able to recognize fairly complex activities such as eating, taking a shower, washing dishes, etc~\citep{lara2012survey}. However, such systems have several issues including privacy, pervasiveness, complexity, and maintenance cost~\citep{lara2012survey} which motivate to use of wearable sensors in HAR.
+
+Wearable fitness devices such as the Nike Fuel Band and Fit-Bit Flex are good examples for wearable sensing. These devices which can be used during exercise, track their wearers physical activities (e.g. number of steps taken) and caloric expenditure. Users may use such information to set their own fitness goals and monitor their progression. In general, the employed sensors in wearable devices can be categorized into three groups: (1) sensors to measure the user's movement (e.g. accelerometer, gyroscope, GPS, etc), (2) sensors to measure the environmental variables (e.g. temperature and humidity), and (3) sensors to measure the physiological signals (e.g., heart rate and electrocardiogram).      
+
+
+Most HAR systems use an Activity 
+Recognition Process (ARP) to detect activities. These systems usually consist of one or more sensors attached to different parts of a person's body that provide diverse streams of sensor data. Such data streams, subsequently, are segmented into several time windows with specific length and from which feature vectors are extracted and fed to a classifier. 
+
+\section{Motivation behind this Research}
+Segmentation in time windows is a critical process in ARP, often implemented with 
+sliding windows ~\citep{janidarmian2017comprehensive,banos2014window} that can be of two types: (1) non-overlapping windows, in which time windows do not intersect, and (2) overlapping windows, in which they do~\citep{lara2012survey}.
+Both overlapping and non-overlapping windows are commonly used in the literature. For instance, in Recofit~\citep{morris2014recofit}, sensor signals are windowed into 5-second overlapping windows sliding at 200ms. Another example is the work in~\citep{banos2014window}, that uses non-overlapping sliding windows to partition sensor signals. 
+%However, it remains unclear which technique is the most relevant.
+
+Several works~\citep{keogh2001online,janidarmian2014automated} have shown that using overlapping sliding windows instead of non-overlapping ones improves the accuracy of the recognition systems. However, the amount of such improvement and its sources in HAR remain unclear. This study addresses this question: based on a detailed, quantitative analysis of multiple datasets, we explain why and by how much overlapping windows affect the performance of ARP. We report and discuss the general and per activity impacts of these two methods considering two cross validation (CV) techniques namely subject-dependent CV and subject-independent CV. 
+
+\section{Thesis Contributions}
+The major contributions of the thesis are as follows:
+
+\begin{itemize}
+
+\item An in-depth investigation of how HAR system performance is impacted by overlapping and non-overlapping sliding windows.
+\item An investigation of the main reasons of performance improvement by overlapping sliding windows in HAR systems 
+\item A set of publicly available scripts\footnote{\url{http://www.github.com/big-data-lab-team/paper-generalizability-window-size}} to help the research community further shed light on the important topic of choosing the types of sliding windows in HAR.
+\end{itemize}
+
+\section{Thesis Overview}
+\noindent\textbf{Chapter two - Background on Human Activity Recognition using Wearable sensors:}
+Discusses the background of
+HAR using wearable devices. This chapter is divided in two parts: 
+\begin{itemize}
+    \item \textbf{Part 1:}
+    Describes the different stages of ARP and also the common used techniques in each stage. Moreover, this part explains and compares diverse types of sliding windows and also system evaluation techniques in HAR systems. \item \textbf{Part 2:}
+    This part reviews the segmentation process using the sliding window technique in previous works in HAR fields. 
+  
+\end{itemize}{}
+\noindent\textbf{Chapter three - Methodology:}
+Explains the used datasets in this study and our ARP setting including window sizes, feature sets and classifiers.
+
+\noindent\textbf{Chapter four - Results:}
+Presents the results and conclusions of five different experiments where were conducted to investigate the general and per activity impacts of overlapping and non-overlapping sliding windows on HAR systems. For each experiment, setting, results and conclusion are presented.
+
+\noindent\textbf{Chapter five - Discussion and conclusion:}
+Discusses and compares the results of different experiments. Finally, we conclude the thesis by summarizing our work and findings and offering remarks on possible future works.   
+
+ 
+        
+
+
+        
